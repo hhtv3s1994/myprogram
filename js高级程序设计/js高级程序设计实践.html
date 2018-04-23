@@ -1,0 +1,435 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>js高级程序设计</title>
+	<link rel="stylesheet" type="text/css" href="设计.css">
+</head>
+<body>
+
+
+<button name="bt1" onclick="sendxhr()">跨域发送ajax试试</button>
+
+<script>
+
+function sendxhr()
+{
+var xhr=new XMLHttpRequest();
+xhr.open("GET","http://localhost/test.php",false);
+xhr.send(null);
+
+
+alert(xhr.responseText);
+}
+
+
+
+</script>
+
+
+
+
+
+<p>第一个是对象字面量</p>
+
+
+
+<script type="text/javascript">
+var firstobj={};
+
+firstobj.name="我的第一个对象属性";
+firstobj.deletepro="马上被删除的属性";
+firstobj.printname=function(){return this.name;};
+
+document.writeln("对象为："+firstobj+"<br/>");  
+document.writeln("对象属性为："+firstobj.name+"<br/>");  
+document.writeln("对象名[属性名]："+firstobj["name"]+"<br/>");   
+document.writeln("对象.方法名："+firstobj.printname+"<br/>");   
+document.writeln("对象.方法名()："+firstobj.printname()+"<br/>");  
+document.writeln("对象[方法名]()："+firstobj['printname']()+"<br/>");  
+delete firstobj.deletepro;
+document.writeln("被删除的属性："+firstobj.deletepro+"<br/>");  
+
+
+function printobjname(obj1){return obj1.name;}
+document.writeln("对象作为参数："+printobjname(firstobj)+"<br/>");  
+</script>
+
+<p>接下来写写构造函数</p>
+
+<script >
+var secondobj=new Object();
+secondobj.name="我的第二个对象属性";
+document.writeln("Object()对象属性："+secondobj.name+"<br/>");  
+document.writeln("自定义构造函数："+"<br/>");  
+
+function Thirdobj(name)
+{this.name=name;
+
+}
+
+var thirdobj=new Thirdobj("我的第三个对象属性");
+var thirdobjtest= Thirdobj("我的第三个对象属性");
+document.writeln("new Thirdobj()对象属性："+thirdobj.name+"<br/>");  
+document.writeln("不newThirdobj() 返回值："+thirdobjtest+"<br/>");  
+
+document.writeln("Thirdobj原型对象："+Thirdobj.prototype
++"<br/>");  
+
+document.writeln("<br/>"+"设置原型对象属性方法:"+"<br/>");  
+
+
+Thirdobj.prototype.number1=1000;
+
+document.writeln("原型对象prtotype："+thirdobj.number1+"<br/>");  
+document.writeln("发现对象已经实例之后改原型有效，再试试改非原型属性"+"<br/>");  
+
+
+Thirdobj.number2=2000;
+document.writeln("修改非原型属性："+thirdobj.number2+"<br/>");  
+
+document.writeln("实例对象__proto__："+thirdobj.__proto__+"<br/>");  
+
+
+if(thirdobj.__proto__===Thirdobj.prototype)document.writeln("thirdobj.__proto__===Thirdobj.prototype"+"<br/>");  
+
+
+document.writeln("对象构造函数："+thirdobj.constructor+"<br/>");  
+document.writeln("thirdobj是Thirdobj的实例?："+(thirdobj instanceof Thirdobj)+"<br/>");  
+
+document.writeln("thirdobj有自身属性name?："+thirdobj.hasOwnProperty('name')+"<br/>");  
+
+
+document.writeln("Thirdobj的原型是Function.prototype："+Function.prototype.isPrototypeOf(Thirdobj)+"<br/>");  
+
+document.writeln("Thirdobj.__proto__.__proto__= Object.prototype："+(Thirdobj.__proto__.__proto__===Object.prototype)+"<br/>"); 
+
+
+</script>
+
+<p>再玩玩各种引用类型吧</p>
+<script >
+var arr1=new Array("这","是","我","的","数","组");
+document.writeln("数组第一个元素:"+arr1[0]+"<br/>"+"<br/>");
+document.writeln("数组长度:"+arr1.length+"<br/>");
+document.writeln("对象是数组类实例？:"+(arr1 instanceof Array)+"<br/>");
+document.writeln("静态方法：对象是数组吗？:"+Array.isArray(arr1)+"<br/>");   //静态方法
+document.writeln("数组转换成字符串:"+arr1.toString()+"<br/>");
+document.writeln("栈方法加入元素'太'"+"<br/>");
+
+arr1.push("太");
+
+document.writeln("输出此时最后一个元素:"+arr1[arr1.length-1]+"<br/>");
+document.writeln("队列方法取出第一个元素："+arr1.shift()+"<br/>");
+document.writeln("输出此时第一个元素:"+arr1[0]+"<br/>");
+document.writeln("反转数组"+"<br/>");
+
+arr1.reverse();
+document.writeln("反转之后:"+arr1.toString()+"<br/>");
+
+var arr2=[13,22,33,14,5,16];
+
+document.writeln("13,22,33,14,5,16排序"+"<br/>");
+
+arr2.sort();
+
+document.writeln("排序"+arr2.toString()+"<br/>");
+
+var arr3=arr1.concat(arr2);
+
+document.writeln("数组连接："+arr3.toString()+"<br/>");
+
+
+
+document.writeln("数组切片："+arr3.slice(1,4).toString()+"<br/>");
+
+document.writeln("数组元素'是'的索引："+arr3.indexOf("是")+"<br/>");
+
+
+document.writeln("数组迭代："+arr3.indexOf("是")+"<br/>");
+
+</script>
+
+<p>日期</p>
+<script >
+
+document.writeln("直接Date()，带返回值的构造："+Date()+"<br/>");
+
+var date1=new Date();
+document.writeln("new Date对象："+date1+"<br/>");
+
+document.writeln(".getTime()获得毫秒："+date1.getTime()+"<br/>");
+
+
+
+date1.setFullYear(1993,3,3);
+document.writeln("setFullYear()设置时间,对象："+date1+"<br/>");
+
+
+var date2=new Date();
+document.writeln("getDate() 日:"+date2.getDate()+" 月:"+date2.getMonth()+" 天:"+date2.getDay()+" 时:"+date2.getHours()+"<br/>");
+
+
+document.writeln("日期对象变字符串:UTC:"+date2.toUTCString()+"<br/>"+"Date:"+date2.toDateString()+"<br/>"+"Time:"+date2.toTimeString()+"<br/>");
+
+document.writeln("现在的毫秒now"+Date.now()+"<br/>");
+
+
+</script>
+
+<p>函数类型</p>
+<script>
+
+var printa=function(){var a=1; return a;}
+
+document.writeln("函数表达式printa变量:"+printa+"<br/>");
+document.writeln("函数返回值内部变量:"+printa()+"<br/>");
+
+
+function printbtest(){
+ try {printb();} catch(err) {document.write(err.message);}    //错误检测就是 如果代码出错，则返回错误信息，跳过代码执行，不用检测程序会中断    这里的err对象是原生的
+}
+document.writeln("在表达式printb之前调用函数报错:"+printbtest()+"<br/>");
+var printb=function(){var b=1; return b;}
+
+var printc=new Function("c","return c");
+document.writeln("函数的构造函数，返回内部变量:"+printc()+"<br/>");
+
+var printd=printb;
+document.writeln("函数多个名字，printd=printb:"+printd+"<br/>");
+
+
+var printprintb=function(){return printb();}
+document.writeln("函数作为返回值，printprintb:"+printprintb+"<br/>");
+document.writeln("函数作为返回值，printprintb():"+printprintb()+"<br/>");//函数返回值和函数名的区别，匿名函数
+
+var returnarguments=function(value1){
+return value1;
+
+}
+document.writeln("函数作为参数，参数返回函数(printb):"+returnarguments(printb)+"<br/>");
+document.writeln("函数作为参数，参数返回函数(printb()):"+returnarguments(printb())+"<br/>");
+
+var execarguments=function(value1){
+value1;
+
+}
+document.writeln("函数作为参数，参数执行函数:"+execarguments+"<br/>");
+document.writeln("函数作为参数，参数执行函数(printb()):"+execarguments(printb())+"无效"+"<br/>");//让b=a()无法执行
+
+execarguments=function(value1)
+{
+value1();
+
+}
+
+document.writeln("修改函数变量引用:"+execarguments+"<br/>");
+document.writeln("参数执行函数(printb):"+execarguments(printb)+"似乎不能直接执行参数？"+"<br/>");
+
+execarguments=function(value1)
+{
+	var value1=value1;  
+value1();
+
+}
+ //直接内部变量和this.变量区别
+document.writeln("参数赋给同名内部变量:"+execarguments(printb)+"<br/>");
+
+
+printarguments=function(argu1,argu2)
+{return "参数1："+arguments[0]+" 参数2："+arguments[1];}
+
+document.writeln("arguments数组返回函数参数:"+printarguments(100,200)+"<br/>");
+document.writeln("函数名.lenth,参数个数:"+printarguments.length+"<br/>");
+
+
+returncallee=function(argu1,argu2)
+{return "参数调用者："+arguments.callee;}
+document.writeln("arguments.callee返回被调者:"+returncallee()+"<br/>");
+
+
+var returnwidth=function(){
+
+	this.width=1001;
+	return this.width;
+}
+
+var returnwidth2=function(){
+
+	this.width=9999;
+	return this.width;
+}
+
+
+document.writeln("call改变this指向:"+returnwidth.call()+"失败"+"<br/>");
+
+</script>
+<p>包装类型，全部用new构造生成</p>
+
+<script>
+
+var string2=new String("测试字符串12345ABCDE");
+
+document.writeln("字符串对象:"+string2+"<br/>");
+document.writeln("串.substring():"+string2.substring(2)+"<br/>");
+
+var objstring=new Object("这是Object构造的字符串");
+document.writeln("Object创造的字符串:"+objstring+"<br/>");
+var objnum=new Object(10000);
+document.writeln("Object创造的数字:"+objnum+"<br/>");
+var bool1=new Boolean(false);
+document.writeln("布尔:"+bool1+"<br/>");
+
+document.writeln("string2类型:"+(typeof string2)+"<br/>");
+document.writeln("objnum类型:"+(typeof objnum)+"<br/>");
+document.writeln("返回的都是对象，字符串包装对象，数包装对象"+"<br/>");
+document.writeln("直接字符串类型:"+(typeof "haha")+"<br/>");
+document.writeln("string2的valueOf:"+string2.valueOf()+"<br/>");
+document.writeln("objnum的toString:"+objnum.toString()+"<br/>");
+document.writeln("这两个方法基本不显式调用"+"<br/>");
+document.writeln("toFiexde(3)转为浮点:"+objnum.toFixed(3)+"<br/>");
+document.writeln("toExponential()转为自然指数:"+objnum.toExponential()+"<br/>");
+document.writeln("字符串长度:"+string2.length+"<br/>");
+document.writeln("索引访问字符charAt6:"+string2.charAt(6)+"<br/>");
+document.writeln("索引访问字符编码6:"+string2.charCodeAt(6)+"<br/>");
+document.writeln("多个字符串拼接:"+string2.concat("拼接成功")+"<br/>");
+document.writeln("字符串分割出子串:"+string2.slice(3,7)+"<br/>");
+document.writeln("字符串substr分割长度:"+string2.substr(3,7)+"<br/>");
+document.writeln("字符串substring分割下标:"+string2.substring(3,7)+"<br/>");
+
+var stringtrim=new String("   2 3 4 5 6 7 8 9 2 ");
+
+document.writeln("清理掉字符串的空格:"+stringtrim+"<br/>");
+
+
+var stringtoarray1=string2.split();
+document.writeln("字符串分隔成数组:"+stringtoarray1.toString()+"<br/>");
+
+document.writeln("字符串中字符索引:"+string2.indexOf("串")+"<br/>");
+document.writeln("字符串中反向找字符索引:"+string2.lastIndexOf("串")+"<br/>");
+document.writeln("字符串中指定位置开始找字符索引:"+string2.indexOf("串",3)+"<br/>");
+
+document.writeln("全部转小写:"+string2.toLowerCase()+"<br/>");
+
+
+var matchstring=string2.match("ABC");
+document.writeln("模式匹配字符串数组:"+matchstring+"<br/>");
+document.writeln("匹配的开头索引位置:"+matchstring.index+"<br/>");
+document.writeln("匹配的第1组字符串:"+matchstring[0]+"<br/>");
+document.writeln("匹配搜索,返回的是索引:"+string2.search("ABC")+"<br/>");
+document.writeln("匹配替换，返回串:"+string2.replace("ABCDE","HHHHH")+"<br/>");
+document.writeln("字符串比较:"+string2.localeCompare(matchstring)+"<br/>");
+
+document.writeln("多个编码转为字符串(十进制):"+String.fromCharCode(70,80,60)+"<br/>");
+
+</script>
+
+<p>全局函数</p>
+<script type="text/javascript">
+document.writeln("数字字符串解析:"+parseInt("10.1")+"<br/>");
+document.writeln("数字字符串解析(浮点):"+parseFloat("10.1")+"<br/>");
+document.writeln("是否数字:"+isNaN("10.1")+"<br/>");
+document.writeln("url编码，转义特殊字符(中文等):"+encodeURI("你妹夫")+"<br/>");
+document.writeln("url编码，转义保留字符/%?@$:"+encodeURIComponent("/%?@$")+"<br/>");
+document.writeln("eval立刻执行字符串:"+"<br/>");
+eval("document.writeln('OK')");
+
+
+
+</script>
+
+<p>Math</p>
+<script type="text/javascript">
+document.writeln("自然数:"+Math.E+"<br/>");
+document.writeln("圆周率:"+Math.PI+"<br/>");
+document.writeln("LN2:"+Math.LN2+"<br/>");
+document.writeln("最小值:"+Math.min(1,2,3,4)+"<br/>");
+document.writeln("四射五入:"+Math.round(4.5)+"<br/>");
+document.writeln("随机数:"+Math.random()+"<br/>");
+/*document.writeln("随机选择数:"+Math.selectFrom(2,10)+"<br/>");*/
+document.writeln("绝对值:"+Math.abs(-199)+"<br/>");
+document.writeln("绝对值:"+Math.abs(-199)+"<br/>");
+</script>
+
+<p>对象</p>
+<script type="text/javascript">
+var objname={
+name:"yellow",year:15,
+_name2:"red"
+
+}
+document.writeln("数据属性可以直接访问:"+objname.name+"<br/>");
+
+
+var propertydes=Object.getOwnPropertyDescriptor(objname,"name");
+document.writeln("对象属性特性(返回值是对象):值:"+propertydes.value+"<br/>");
+document.writeln("对象属性特性(返回值是对象):get:"+propertydes.get+"<br/>");
+document.writeln("对象属性特性(返回值是对象):可配置(可以重定义):"+propertydes.configurable+"<br/>");
+document.writeln("对象属性特性(返回值是对象):可枚举:"+propertydes.enumerable+"<br/>");
+document.writeln("对象属性特性(返回值是对象):值可改:"+propertydes.writable+"<br/>");
+document.writeln("访问器属性没有值,不能直接定义，必须define，get，set:"+objname.name2+"<br/>");
+
+
+Object.defineProperty(objname,"name2",     
+
+{get:function(){return this._name2;},set:function(value){
+this._name2=value;}
+}	);
+
+var propertydes2=Object.getOwnPropertyDescriptor(objname,"name2");
+document.writeln("其实就是定义一个空值新属性调用有值的下划线属性:"+propertydes2.get+"<br/>");
+document.writeln("get:"+propertydes2.get()+"<br/>");
+
+
+
+
+document.writeln("对象创建:"+"<br/>");
+
+
+
+
+
+
+
+</script>
+
+
+
+<p>BOM</p>
+
+<script >
+
+globalstring="这是全局字符串";
+
+document.writeln("全局属性:"+window.globalstring+"<br/>");
+document.writeln("未定义全局属性:"+window.nodefined+"<br/>");
+document.writeln("窗口离屏幕顶:"+window.screenTop+"窗口离屏幕左:"+window.screenLeft+"<br/>");
+document.writeln("窗口大小宽:"+window.innerWidth+"窗口高度:"+window.innerHeight+"<br/>");
+document.writeln("窗口宽度:"+window.outerWidth+"窗口高度:"+window.outerHeight+"<br/>");
+</script>
+
+<button onclick="open('http://www.baidu.com')">打开</button>
+<button onclick="alert('alert')">弹窗</button>
+<button onclick="prompt('alert')">提醒窗</button>
+
+
+<div id="maopaof">  试一试事件冒泡委托 target
+
+<button id="maopao">委托提醒</button>
+  </div>
+<script>
+var mpbn0=document.getElementById("maopaof");
+var mpbn1=document.getElementById("maopao");
+
+
+mpbn0.onclick=function(event){
+
+if(event.target==mpbn1)alert("OK");
+else alert("你点错了");
+}
+
+</script>
+
+
+
+</body>
+</html>
