@@ -2,60 +2,48 @@
 
 多值逗号和空格:同类型值用逗号， 复合属性的多个值用空格
 
+覆盖权重 元素1 类10 ID 100 style 1000    重要属性!import
 
 二、样式表插入:1、外部<link rel="stylesheet"  type="text/css" href="" >  2 内联<p style> 3、插入 <style></style>
 
-三、选择器 1、元素 p      子元素选择 > 相邻兄弟（下一个）+     伪类： 聚焦:focus  第一个子元素:first-child  伪元素: 首行first-line  首字母first-letter  元素前  元素后
-
-分组选择器 p,a,h1,h2
+三、选择器 1、元素 p 子元素选择 > 相邻兄弟（下一个）+  伪类： 聚焦:focus  第一个子元素:first-child  伪元素: 首行first-line  首字母first-letter  元素前:before  元素后:after 分组选择器 p,a,h1,h2  后代选择器 p a id选择器#id 类选择器 .class   属性选择器[title=W3School]  ~=  ^= $= *= 选择器组合，p.class  
 
 继承  子元素继承
 
-后代选择器 p a id选择器#id 类选择器 .class   
+四、背景 background 背景颜色-color: 背景图像-image:url()  背景重复(平铺)  -repeat: repeat xy重复，不重复 ; 背景定位:-position顶底左右中长度百分左上右下 背景关联background-attachment:固定fixed 滚动  
 
-属性选择器[title=W3School]  ~=  ^= $= *=
-
-选择器组合，p.class  
+五、文本 前景色:color 默认透明色:transparent 缩进text-intent 悬挂缩进   对齐:-align 左中右 justify两端对齐 词间隔 word-spacing 正负 字母间隔 letter-spacing  字符转换-transform:无none 大小写(lower)uppercase 首字capitalize 文本装饰-decorate: 无 上下划线 over(under)line 穿过线 line-throught 闪烁blink    空白符white-space: normal 保留空格pre 不换行nowrap空格换行pre-wrap pre-line  文本方向 direction：rtl ltr  行高:line-height数值、百分比、缩放因子   垂直对齐（同行子元素）vertical-align:上标sup下标sub低端bottom顶端top中间middle百分比 
 
 
-
-四、背景 background 背景颜色-color: 背景图像-image:url()  背景重复(平铺)  -repeat: repeat xy重复，不重复 ; 背景定位:-position顶底左右中长度百分 背景关联background-attachment:fixed
-
-五、文本 前景色:color
-
-缩进text-intent 正负   对齐:-align 左中右 justify两端对齐 词间隔 word-spacing 正负 字母间隔 letter-spacing  字符转换-transform:无none 大小写(lower)uppercase 首字capitalize 文本装饰-decorate: 无 上下划线 over(under)line 穿过线 line-throught 闪烁blink    空白符white-space: normal pre nowrap pre-wrap pre-line 空格 换行 自动换行
- 文本方向 direction：rtl ltr    行高:line-height数值百分比   
-
-
-六、字体 字体系列   font-family:字体1名，字体2名  通用字体系列Serif Sans-serif Monospace Cursive Fantasy  字体风格font-style:normal iltalic oblique 字体加粗font-weight normal bold 900  字体大小:像素em百分比
+六、字体 字体系列   font-family:字体1名，字体2名  通用字体系列Serif Sans-serif Monospace Cursive Fantasy  字体样式font-style:普通normal斜体iltalic倾斜oblique 字体加粗font-weight:普通normal加粗bold更粗bolder 900  字体大小font-size:像素em百分比  字体变形 font-varint:小型大写small-caps
 
 
 七、链接 伪类 :未访问link 已访问visited 悬停hover 被点击active
 
-八、列表  列表类型 list-style-type 点disc圈circle 方 列表项图像list-style-image:url 列表标志位置 list-style-position
+八、列表  列表类型 list-style-type 点disc圈circle方 列表项图像list-style-image:url 列表标志位置list-style-position
 
 
 九、表格 边框 border   合并边框border-collapse :collapse 表格宽高 文本对齐:水平对齐text-align 垂直对齐vertical-align  内边距  空单元
 
-十、轮廓 outline   样式outline-style   颜色:outline-color   宽度outline-width   可能的样式:无 点 虚线dashed 实线 双线 凹槽 凸槽 凹边 凸边
+十、轮廓 outline   样式outline-style   颜色:outline-color   宽度outline-width   可能的样式:无none点dotted虚线dashed实线solid双线double凹槽 凸槽 凹边 凸边
 
 
-十一、框模型：1、内容宽高 width height   2、内边距padding 3、外边距margin 4、边框（粗细）border    5、边距：顶底左右  数值百分比正负 6值复制左=右，上=下  7、外边距合并
+十一、框模型：1、内容宽高 width height   2、内边距padding 3、透明外边距margin 4、边框（粗细）border    5、边距：顶底左右  数值百分比正负 6值复制左=右，上=下  7、外边距合并
 
-十二、边框：顶底左右    边框样式 border-style 无   边框宽度 border-width 长度thin 、medium（默认值） 和 thick。  边框颜色border-color  
+十二、边框：顶底左右    边框样式border-style:无none点dotted虚线dashed实线solid双线double凹槽 凸槽 凹边 凸边 边框宽度border-width:长度thin 、medium（默认值）和thick 边框颜色border-color  
 
-十三、定位：  1、文档流position:static 相对relative 绝对absolute 固定fixed  top bottom  left right    2、溢出overflow   3
+十三、定位：  1、文档流position:static 相对relative 绝对absolute 固定fixed  top bottom  left right    2、元素溢出overflow强制滚动条scroll溢出自动滚动auto隐藏hiden   3
   剪裁clip:rect() 4 、 覆盖:z-index
 
 相对:占据原位  绝对：相对于父元素，脱离文档流
 
-十四、浮动：脱离文档流，只和浮动元素碰撞   float:left right  清理clear： left、right、both 
+十四、浮动：脱离文档流，只和浮动元素碰撞   float:左浮动left右浮动right  清理clear： 左left右right皆both无none 
 
 十五、对齐  块级:自动外边距margin:auto   定位  浮动    
 
 十六、尺寸 宽高  行高 最大（小）宽度 最大（小）高度
 
-十七、显示 display:无 块 内联     鼠标光标 cursor  可见性      透明度（图片和框）opacity   
+十七、显示 display:无none块block内联inline内联块     鼠标光标 cursor  可见性visbility:隐藏hidden可见visible     透明度（图片和框）opacity   
 
 
 导航
