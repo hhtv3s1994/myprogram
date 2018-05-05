@@ -112,15 +112,15 @@ each() list()    3、多维遍历  4、排序   5、重排序 随机打乱 shuffle（组）反转arra
 
 二十一、上传    1、上传设置 php.ini  允许上传 大小限制 临时目录  2、表单类型  type="file"  MIME属性 enctype="multipart/form-data" 3、隐藏表单域设置文件最大长度  （4）文件名 name  6、$_FILE['userfile'][]  文件名name  文件类型type  文件尺寸size 错误信息 error    
 
-二十二、Cookie  设置cookie setcookie("键"，"值") 
+二十二、Cookie  设置cookie setcookie(名，值，时间) 取回值$_COOKIE["名"] 是否设置cookie isset()
 
-二十三、session
+二十三、session 开启session_start()   读取和赋值$_SESSION[] 销毁session_destroy(名，值)
 
 二十四、邮件
 
-二十五、错误异常
+二十五、错误异常 1、die("提示字符")  2、自定义错误处理函数 function（错误等级,错误信息，错误文件名，错误行号，错误变量){}  3、设置自定义错误 set_errpr_handler（函数名）
 
-二十六、过滤器
+二十六、过滤器 1、过滤函数 单一变量filter_var(值,过滤器) 多个变量filter_var_array()    输入变量filter_input （输入类型，值，过滤器） 多个输入变量filter_input_array（） 2、过滤器(1)类别 验证过滤器（返回true,false）  sanlitize（删除非法字符返回字符串）（2） 整数过滤器, FILTER_VALIDATE_INT 字符串过滤器FILTER_SANITIZE_STRING回调过滤器FILTER_CALLBACK（3）输入类型 INPUT_GET 3、验证选项 flag
 
 二十七、JSON
 
